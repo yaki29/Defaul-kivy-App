@@ -1,0 +1,52 @@
+#: import random random
+<ScatterTextWidget>:
+	orientation: 'vertical'
+	canvas:
+		Color:
+			rgba: 0, 1, 0, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+		Ellipse:
+			pos: 100, 400
+			size: 300, 100
+	TextInput:
+		id: my_textinput
+		font_size: 150
+		size_hint_y: None
+		height: 200
+		text: 'Default'
+		on_text: root.colour_change()
+#		on_text: root.canvas_drawing()
+	FloatLayout:
+		Scatter:
+			center: self.parent.center
+			canvas.after:
+				Color: 
+					rgba: 1, 0, 0, 0.5
+				Rectangle: 
+					pos: self.pos
+					size: self.size
+			size_hint: None, None	
+			size: my_label.size
+			Label:
+				id: my_label
+				text: my_textinput.text
+				font_size: 150
+				color: root.text_colour
+				size: self.texture_size
+	
+	BoxLayout:
+		canvas.after:
+			Color:
+				rgba: 1, 0, 0, 0.75
+		Label: 
+			id: label1
+			text: my_textinput.text
+			font_size: 100
+			color: root.text_colour
+		Label:
+			id: label2
+			text: my_textinput.text
+			font_size: 100
+			color: root.text_colour
